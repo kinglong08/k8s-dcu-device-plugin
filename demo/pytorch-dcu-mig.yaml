@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dcu-mig-pytorch-demo
+spec:
+  containers:
+    - name: dcu-mig-pytorch-demo
+      image: harbor.sourcefind.cn:5443/dcu/admin/base/pytorch:2.1.0-ubuntu22.04-dtk24.04.2-py3.10
+      command: [ "/bin/bash", "-c", "--" ]
+      args: [ "sleep infinity & wait" ]
+      resources:
+        limits:
+          hygon.com/dcu-mig-4g-31gb: 1 # requesting a mig instance

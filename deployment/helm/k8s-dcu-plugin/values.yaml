@@ -1,0 +1,14 @@
+dcuDevicePlugin:
+  dcuDpCntr:
+    containerSecurityContext:
+      privileged: true
+    env:
+      logOutput: "true"
+      logThreshold: INFO
+      logVerbose: "2"
+      pulse: "30"
+      resourceRegisterStrategy: mixed
+    image:
+      repository: harbor.sourcefind.cn:5443/dcu/admin/base/dcu-device-plugin
+      tag: v2.3.0
+kubernetesClusterDomain: cluster.local

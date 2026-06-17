@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dcu-device-plugin-mig
+  labels:
+  {{- include "k8s-dcu-plugin-mig.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      name: dcu-dp-ds-mig
+    {{- include "k8s-dcu-plugin-mig.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        name: dcu-dp-ds-mig
+      {{- include "k8s-dcu-plugin-mig.selectorLabels" . | nindent 8 }}
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+    spec:
+      containers:
+      - env:
+        - name: PULSE
+          value: {{ quote .Values.dcuDevicePluginMig.dcuDpCntr.env.pulse }}
+        - name: RESOURCE_REGISTER_STRATEGY
+          value: {{ quote .Values.dcuDevicePluginMig.dcuDpCntr.env.resourceRegisterStrategy
+            }}
+        - name: LOG_THRESHOLD
+          value: {{ quote .Values.dcuDevicePluginMig.dcuDpCntr.env.logThreshold }}
+        - name: LOG_VERBOSE
+          value: {{ quote .Values.dcuDevicePluginMig.dcuDpCntr.env.logVerbose }}
+        - name: LOG_OUTPUT
+          value: {{ quote .Values.dcuDevicePluginMig.dcuDpCntr.env.logOutput }}
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.dcuDevicePluginMig.dcuDpCntr.image.repository }}:{{ .Values.dcuDevicePluginMig.dcuDpCntr.image.tag
+          | default .Chart.AppVersion }}
+        name: dcu-dp-cntr
+        resources: {}
+        securityContext: {{- toYaml .Values.dcuDevicePluginMig.dcuDpCntr.containerSecurityContext
+          | nindent 10 }}
+        volumeMounts:
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: dp
+        - mountPath: /dev
+          name: dev
+        - mountPath: /etc/dmi_mig_config
+          name: dmi-mig
+          readOnly: true
+        - mountPath: /opt/hyhal
+          name: hyhal
+          readOnly: true
+      nodeSelector: {{- toYaml .Values.dcuDevicePluginMig.nodeSelector | nindent 8 }}
+      tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+        name: dp
+      - hostPath:
+          path: /dev
+        name: dev
+      - hostPath:
+          path: /etc/dmi_mig_config
+          type: DirectoryOrCreate
+        name: dmi-mig
+      - hostPath:
+          path: /opt/hyhal
+        name: hyhal

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dcu-share-pytorch-demo
+spec:
+  containers:
+    - name: dcu-share-pytorch-demo
+      image: harbor.sourcefind.cn:5443/dcu/admin/base/pytorch:2.1.0-ubuntu22.04-dtk24.04.2-py3.10
+      securityContext:
+        privileged: true
+      command: [ "/bin/bash", "-c", "--" ]
+      args: [ "sleep infinity & wait" ]
+      resources:
+        limits:
+          hygon.com/dcu-share-*c-*g: 1 # requesting a share vDCU,-*c-*g为vDCU资源规格

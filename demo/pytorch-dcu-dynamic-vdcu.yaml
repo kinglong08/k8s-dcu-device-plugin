@@ -1,0 +1,21 @@
+# 动态切分 vDCU 示例（HAMi 模式）
+# 前置条件：
+#   1. 节点已打标签 dcu=on
+#   2. 已部署 k8s-dcu-plugin-hami.yaml（strategy=hami）
+#   3. 已部署 k8s-dcu-scheduler（Webhook + Scheduler）
+# 说明：dcucores 为算力占比（1-100），dcumem 为显存申请量（MB）
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dcu-dynamic-vdcu-demo
+spec:
+  containers:
+    - name: dcu-dynamic-vdcu-demo
+      image: harbor.sourcefind.cn:5443/dcu/admin/base/pytorch:2.1.0-ubuntu22.04-dtk24.04.2-py3.10
+      command: [ "/bin/bash", "-c", "--" ]
+      args: [ "sleep infinity & wait" ]
+      resources:
+        limits:
+          hygon.com/dcunum: 1      # 申请 1 个 DCU 槽位
+          hygon.com/dcucores: 30   # 申请 30% 算力
+          hygon.com/dcumem: 8192   # 申请 8192 MB（8 GB）显存

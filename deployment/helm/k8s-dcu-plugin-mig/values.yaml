@@ -1,0 +1,17 @@
+dcuDevicePluginMig:
+  dcuDpCntr:
+    containerSecurityContext:
+      privileged: true
+    env:
+      logOutput: "true"
+      logThreshold: INFO
+      logVerbose: "2"
+      pulse: "30"
+      resourceRegisterStrategy: mig
+    image:
+      repository: harbor.sourcefind.cn:5443/dcu/admin/base/dcu-device-plugin
+      tag: v2.3.0
+  nodeSelector:
+    dcu-mode: mig
+    hygon.com/dcu: "true"
+kubernetesClusterDomain: cluster.local
