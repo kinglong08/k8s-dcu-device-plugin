@@ -8,7 +8,6 @@ package plugin
 import (
 	"errors"
 	"fmt"
-	"k8s-dcu-device-plugin-v2/internal/pkg/util"
 	"math"
 	"os"
 	"os/signal"
@@ -16,7 +15,9 @@ import (
 	"strings"
 	"syscall"
 
-	"g.sugon.com/das/dcgm-dcu/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util"
+
+	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
 	hmutil "github.com/Project-HAMi/HAMi/pkg/util"
 	"github.com/golang/glog"
 	"github.com/kubevirt/device-plugin-manager/pkg/dpm"

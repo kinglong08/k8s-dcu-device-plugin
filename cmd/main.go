@@ -8,16 +8,17 @@ package main
 
 import (
 	"flag"
-	"g.sugon.com/das/dcgm-dcu/pkg/dcgm"
-	"github.com/golang/glog"
-	"github.com/kubevirt/device-plugin-manager/pkg/dpm"
-	"github.com/urfave/cli/v2"
-	"k8s-dcu-device-plugin-v2/internal/pkg/plugin"
-	"k8s-dcu-device-plugin-v2/internal/pkg/util"
 	"os/signal"
 	"strconv"
 	"strings"
 	"syscall"
+
+	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/plugin"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util"
+	"github.com/golang/glog"
+	"github.com/kubevirt/device-plugin-manager/pkg/dpm"
+	"github.com/urfave/cli/v2"
 
 	"os"
 	"time"

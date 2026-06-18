@@ -1,12 +1,13 @@
-module k8s-dcu-device-plugin-v2
+module github.com/HYGON-AI/dcu-exporter-v2
 
 go 1.22.2
 
 toolchain go1.24.1
 
 require (
-	g.sugon.com/das/dcgm-dcu v0.0.0-00010101000000-000000000000
+	github.com/HYGON-AI/dcu-dcgm v0.0.0
 	github.com/Project-HAMi/HAMi v0.0.0-20250125070959-ab547e40cc64
+	github.com/golang/glog v1.2.2
 	github.com/kubevirt/device-plugin-manager v1.19.5
 	github.com/urfave/cli/v2 v2.27.1
 	golang.org/x/net v0.28.0
@@ -27,7 +28,6 @@ require (
 	github.com/go-openapi/jsonreference v0.21.0 // indirect
 	github.com/go-openapi/swag v0.23.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/glog v1.2.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
@@ -63,4 +63,4 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
 
-replace g.sugon.com/das/dcgm-dcu => ../../dcu-dcgm
+replace github.com/HYGON-AI/dcu-dcgm => ../dcu-dcgm

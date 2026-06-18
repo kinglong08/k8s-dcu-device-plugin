@@ -26,14 +26,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/golang/glog"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/golang/glog"
+
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/api"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util/client"
 	"github.com/Project-HAMi/HAMi/pkg/util/nodelock"
-	"k8s-dcu-device-plugin-v2/internal/pkg/api"
-	"k8s-dcu-device-plugin-v2/internal/pkg/util/client"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

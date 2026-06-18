@@ -7,15 +7,15 @@ package plugin
 
 import (
 	"fmt"
-	"k8s-dcu-device-plugin-v2/internal/pkg/api"
-	"k8s-dcu-device-plugin-v2/internal/pkg/util"
-	"k8s-dcu-device-plugin-v2/internal/pkg/util/client"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/api"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util"
+	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util/client"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 
-	"g.sugon.com/das/dcgm-dcu/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
 	"github.com/golang/glog"
 	"golang.org/x/net/context"
 	corev1 "k8s.io/api/core/v1"
