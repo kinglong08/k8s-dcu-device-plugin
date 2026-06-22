@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-dcgm/v2/pkg/dcgm"
 	"github.com/golang/glog"
 	"golang.org/x/net/context"
 	corev1 "k8s.io/api/core/v1"

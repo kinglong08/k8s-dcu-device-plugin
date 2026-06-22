@@ -17,7 +17,7 @@ import (
 
 	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util"
 
-	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-dcgm/v2/pkg/dcgm"
 	hmutil "github.com/Project-HAMi/HAMi/pkg/util"
 	"github.com/golang/glog"
 	"github.com/kubevirt/device-plugin-manager/pkg/dpm"

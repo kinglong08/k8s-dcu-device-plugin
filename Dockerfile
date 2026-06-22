@@ -7,7 +7,7 @@ WORKDIR /root
 
 RUN  apt update && apt install -y kmod pciutils
 
-COPY LICENSE NOTICE THIRD_PARTY_NOTICES.md /licenses/
+COPY LICENSE /licenses/
 
 COPY k8s-device-plugin .
 

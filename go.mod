@@ -5,7 +5,7 @@ go 1.22.2
 toolchain go1.24.1
 
 require (
-	github.com/HYGON-AI/dcu-dcgm v0.0.0
+	github.com/HYGON-AI/dcu-dcgm/v2 v2.1.1
 	github.com/Project-HAMi/HAMi v0.0.0-20250125070959-ab547e40cc64
 	github.com/golang/glog v1.2.2
 	github.com/kubevirt/device-plugin-manager v1.19.5
@@ -62,5 +62,3 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
-
-replace github.com/HYGON-AI/dcu-dcgm => ../dcu-dcgm

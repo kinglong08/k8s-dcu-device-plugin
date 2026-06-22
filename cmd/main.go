@@ -13,7 +13,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/HYGON-AI/dcu-dcgm/pkg/dcgm"
+	"github.com/HYGON-AI/dcu-dcgm/v2/pkg/dcgm"
 	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/plugin"
 	"github.com/HYGON-AI/dcu-exporter-v2/internal/pkg/util"
 	"github.com/golang/glog"
